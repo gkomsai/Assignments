@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Array</title>
+  </head>
+  <body>
+    <h1> Custom Array</h1>
+  </body>
+  <script>
+        function myArray() {
+            Object.defineProperty(this, "length", {
+                value: 0,
+                writable: true,
+                enumerable: false //means loopable
+
+            });
+          this.length =arguments.length;
+          for (let i = 0; i < this.length; i++) {
+            this[i] = arguments[i];
+          }
+        }
+
+
+        let arr1=new myArray("x", "y","z");
+        // console.log(arr1);
+        myArray.prototype.पुश =function (value){
+           let index=this.length;
+            this[index]=value;
+            this.length++;
+        }
+        arr1.पुश("a");
+        console.log(arr1);
+        console.log(Object.values(arr1));
+        //pop() function
+        myArray.prototype.हटाओ =function (){
+           let index=this.length-1;
+          delete  this[index];
+            this.length--;
+        }
+        arr1.हटाओ();
+        console.log(arr1);
+        console.log(Object.values(arr1));
+        //top()function
+        myArray.prototype.टॉप =function (){
+           let index=this.length-1;
+       
+          console.log(this[index]);
+        }
+        arr1.टॉप();
+        // print()
+        myArray.prototype.प्रिंट=function (){
+          let bag="";
+          for(let i=0; i<this.length; i++ ){
+            bag+=this[i]+" ";
+          }
+         console.log(bag);
+        }
+         arr1.प्रिंट();
+         myArray.prototype.printReverse=function (){
+          let bag="";
+          let N=this.length
+          for(let i=N-1; i>=0; i-- ){
+            bag+=this[i]+" ";
+          }
+         console.log(bag);
+        }
+      arr1.printReverse();
+      
+      //.size
+      myArray.prototype.size=function (){
+     
+          let N=this.length
+          console.log(N)
+         
+        }
+      arr1.size();
+
+
+  </script>
+</html>
